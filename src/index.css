@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-image{
+    background-image: url(./assets/ravi23_may_5.jpg);
+}
+
+.donateimg{
+    src: url(./assets/ravi23_may_5.jpg);
+    height: 40vh;
+    width: 20vw;
+}
