@@ -1,20 +1,26 @@
 import { useState } from "react";
-import Bankdashfordonor from "./Pages/Bankdashfordonor"
-// import DetailsOfDonor from "./Components/DetailsOfDonor";
+import DetailsOfDonor from "./Components/DetailsOfDonor";
+import Bankdash from "./Pages/BloodbankDashboard";
 
 function App() {
-  // State to track whether to show the component or not
-  const [showComponent, setShowComponent] = useState(false);
+  // State to track if DetailsOfDonor popup should be shown
+  const [showDetailsPopup, setShowDetailsPopup] = useState(false);
 
-  // Handler to change the state when the button is clicked
-  const handleButtonClick = () => {
-    setShowComponent(true); // Or toggle with setShowComponent(!showComponent)
+  // Handler to toggle the details popup
+  const toggleDetailsPopup = () => {
+    setShowDetailsPopup(!showDetailsPopup);
   };
 
-
   return (
-    <Bankdashfordonor onButtonClick={handleButtonClick}/>
-  )
-};
+    <div className="App">
+      <Bankdash onButtonClick={toggleDetailsPopup} />
+      {showDetailsPopup && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <DetailsOfDonor onClose={toggleDetailsPopup} />
+        </div>
+      )}
+    </div>
+  );
+}
 
-export default App
+export default App;
